@@ -3,11 +3,11 @@
 
 
 # 主要功能及后续计划
-1.大模型RAG知识库功能
-2.大模型agent智能通功能
-3.大模型lora微调高级功能
-4.stable diffusian高级微调功能
-5.生成视频好玩功能
+ 1. 大模型RAG知识库功能
+ 2. 大模型agent智能体功能
+ 3. 大模型lora微调高级功能
+ 4. stable diffusian高级微调功能
+ 5. 生成视频好玩功能
 
 # 使用示例
 
@@ -54,11 +54,12 @@ pip3 install -r requirements.txt
 ## openai 
 如果没有openai_key 可以使用这里的账号.无需翻墙,直接注册使用
 [openai注册](https://openai.vikpay.com)
+下面是使用示例
 ```
 # config.json文件内容示例
 {
   "model": "gpt-3.5-turbo-16k", #支持各种大模型
-  "open_ai_api_key": "XXXXX", #openai key注册后可以获取
+  "open_ai_api_key": "XXXXX", #key注册后可以获取
   "open_ai_api_base": "https://openai.vikpay.com/api", #openai url
 }
 ```
