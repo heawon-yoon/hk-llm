@@ -27,7 +27,7 @@
 **(1) 克隆项目代码：**
 
 ```bash
-https://github.com/heawon-yoon/wx-ai.git
+git clone https://github.com/heawon-yoon/wx-ai.git
 cd wx-ai/
 ```
 
