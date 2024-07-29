@@ -85,6 +85,11 @@ nohup python3 app.py > out.log 2>&1 & tail -f out.log
 # 在后台运行程序并通过日志输出二维码
 ```
 
+## Acknowledgements
+
+在这个项目基础是开发的 [chatgpt-on-wechat](https://github.com/zhayujie/chatgpt-on-wechat)
+
+
 # 联系我们
 
 问题咨询和商务合作可联系
