@@ -82,8 +82,8 @@ class Bridge(object):
     def fetch_reply_content(self, query, context: Context) -> Reply:
         if os.listdir(conf().get("rag_path")):
             from db.chroma import ChromaLoader
-            rag_loader = ChromaLoader(query)
-            query = rag_loader.query
+            rag_loader = ChromaLoader()
+            query = rag_loader.rag_prompt(query)
         return self.get_bot("chat").reply(query, context)
 
     def fetch_voice_to_text(self, voiceFile) -> Reply:

@@ -9,7 +9,15 @@ from langchain_community.document_loaders import Docx2txtLoader, CSVLoader, Unst
 from config import conf
 
 class ChromaLoader(object):
-    def __init__(self,query):
+    _instance = None
+
+    def __new__(cls, *args, **kwargs):
+        if not cls._instance:
+            cls._instance = super().__new__(cls)
+            cls._instance.__init_once__()
+        return cls._instance
+
+    def __init_once__(self):
         self.use_rag = False
         self.load_data()
 
@@ -20,7 +28,7 @@ class ChromaLoader(object):
                         这个是用户问题,上面没有内容就自由发挥
                         {question}
                         """
-        self.query = self.rag_prompt(query)
+
 
 
 
@@ -71,11 +79,12 @@ class ChromaLoader(object):
 
         if self.use_rag:
             retriever = self.db.as_retriever(
-                search_type="similarity",
-                search_kwargs={"k": 2},
+                search_type="similarity_score_threshold",
+                search_kwargs={"k": 2, "score_threshold": 0.1},
             )
-            context = retriever.invoke(query)[0]
-            query = self.template.format(context=context.page_content, question=query)
+            context = retriever.invoke(query)
+            if context:
+                query = self.template.format(context=context[0].page_content, question=query)
         return query
 
 
