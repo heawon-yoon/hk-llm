@@ -7,7 +7,7 @@ from common.singleton import singleton
 from config import conf
 from translate.factory import create_translator
 from voice.factory import create_voice
-
+import os
 
 @singleton
 class Bridge(object):
@@ -80,6 +80,10 @@ class Bridge(object):
         return self.btype[typename]
 
     def fetch_reply_content(self, query, context: Context) -> Reply:
+        if os.listdir(conf().get("rag_path")):
+            from db.chroma import ChromaLoader
+            rag_loader = ChromaLoader(query)
+            query = rag_loader.query
         return self.get_bot("chat").reply(query, context)
 
     def fetch_voice_to_text(self, voiceFile) -> Reply:

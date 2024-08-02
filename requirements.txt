@@ -8,3 +8,7 @@ Pillow
 pre-commit
 web.py
 linkai>=0.0.6.0
+langchain_community
+langchain_chroma
+sentence_transformers
+docx2txt
